@@ -1,6 +1,6 @@
 import React, { useState, useEffect  } from 'react';
 // import axios from 'axios';
-import Test from './Test';
+import About from './About';
 import './test.css';
 import { useParams } from 'react-router-dom';
 
@@ -85,7 +85,7 @@ function Detail() {
                     )}
                 </button>
                 <button className="btn btn-light rounded-pill px-3" type="button" onClick={handleButtonClick}>체험단 신청</button>
-                <Test show={showModal} handleClose={handleCloseModal} />
+                <About show={showModal} handleClose={handleCloseModal} />
             </div>
             </div>
 
