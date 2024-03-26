@@ -4,6 +4,7 @@ import { Link,useNavigate } from 'react-router-dom';
 
 function Header() {
   const navigate = useNavigate();
+  const loginId = sessionStorage.getItem('loginId');
 
   const LoginClick = () => {
     navigate('/login');
@@ -11,6 +12,17 @@ function Header() {
 
   const SignUpClick = () => {
     navigate('/signup');
+  };
+
+  // 로그아웃 버튼 클릭 시 호출되는 함수
+  const logoutClick = () => {
+    // 세션에서 로그인 정보 삭제
+    sessionStorage.removeItem('loginId');
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('email');
+    // 페이지 새로고침
+    // window.location.reload();
+    navigate('/login');
   };
 
   return (
@@ -29,7 +41,13 @@ function Header() {
           </form>
 
           <div className="text-end">
-            <button type="button" className="btn btn-outline-light me-2" onClick={LoginClick}>Login</button>
+          {loginId ? (
+              // 로그인 되어 있을 때 로그아웃 버튼 표시
+              <button type="button" className="btn btn-outline-light me-2" onClick={logoutClick}>Logout</button>
+            ) : (
+              // 로그인 되어 있지 않을 때 로그인 버튼 표시
+              <button type="button" className="btn btn-outline-light me-2" onClick={LoginClick}>Login</button>
+          )}
             <button type="button" className="btn btn-warning" onClick={SignUpClick}>Sign-up</button>
           </div>
         </div>
