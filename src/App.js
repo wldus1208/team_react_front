@@ -4,6 +4,7 @@ import Home from './components/Home';
 import About from './pages/About';
 import Login from './pages/LoginForm';
 import Join from './pages/JoinForm';
+import Detail from './pages/detail';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Join />} />
+        <Route path="/detail/:storeId" element={<Detail />} />
       </Routes>
     </BrowserRouter> 
     </div>

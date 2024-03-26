@@ -8,7 +8,7 @@ function LoginForm() {
   useEffect(() => {
     console.log('Login useEffect start')
   }, [])
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   //로그인 input (Id, PW) 변경 값
   const [account, setAccount] = useState({
     lgnId: '',
@@ -44,8 +44,10 @@ function LoginForm() {
           sessionStorage.setItem('loginId', res.data.loginId)
           sessionStorage.setItem('name', res.data.name)
           sessionStorage.setItem('email', res.data.email)
-          //navigate('/')
-          //document.location.href = '/'
+
+          navigate("/")
+          document.location.href = '/'
+          // window.location.href = '/';
         } else {
           alert(res.data.resultMsg)
         }
@@ -53,13 +55,13 @@ function LoginForm() {
       .catch((err) => {
         alert(err.message)
       })
-    //navigate('/')
+    // navigate('/')
   }
   return (
     <div className='d-flex align-items-center py-4'>
       <div className='form-signin w-100 m-auto'>
         <form>
-          <h1 className='h3 mb-3 fw-normal'></h1>
+          <h1 className='h3 mb-3 fw-normal'>Login</h1>
           <div className='form-floating'>
             <input
               type='text'

@@ -1,14 +1,18 @@
-// About.js
+// Modal.jsx
 
 import React from 'react';
 
-const Test = () => {
+function Modal({ handleClose, show }) {
+  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+
   return (
-    <div>
-      <h2>Test 페이지</h2>
-      <p>이곳은 Test 페이지입니다.</p>
+    <div className={showHideClassName}>
+      <section className="modal-main">
+        <button onClick={handleClose}>닫기</button>
+        <p>모달 내용을 여기에 작성하세요.</p>
+      </section>
     </div>
   );
 }
 
-export default Test;
+export default Modal;
