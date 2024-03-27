@@ -11,7 +11,7 @@ const AlbumPage = () => {
       <div className="container">
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           {cards.map((_, index) => (
-            <Card key={index} />
+            <Card key={index} b_no={index}/>
           ))}
         </div>
       </div>
