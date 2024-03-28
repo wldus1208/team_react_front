@@ -1,22 +1,26 @@
 // About.js
 
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios'
+import { useParams } from 'react-router-dom';
 
 const About = ({ handleClose, show }) => {
 
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
   
-  const [loginid, setLoginId] = useState('')
+  // const [loginid, setLoginId] = useState('')
+  const loginid = sessionStorage.getItem('loginId');
+  const { storeId } = useParams();
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [reason, setReason] = useState('')
 
   const save = async () => {
     alert("성공")
-    alert(loginid + name + email + reason)
 
     let params = new URLSearchParams()
+    
+    params.append('b_no', storeId)
     params.append('loginid', loginid)
     params.append('name', name)
     params.append('email', email)
@@ -57,10 +61,12 @@ const About = ({ handleClose, show }) => {
                   className="form-control rounded-3" 
                   id="floatingInput" 
                   placeholder="ID" 
-                  // value={loginid}
-                  onChange={(e) => {
-                    setLoginId(e.target.value)
-                  }}/>
+                  value={loginid}
+                  readOnly
+                  // onChange={(e) => {
+                  //   setLoginId(e.target.value)
+                  // }}
+                  />
                 <label htmlFor="floatingInput">아이디</label>
               </div>
               <div className="form-floating mb-3">
