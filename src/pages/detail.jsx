@@ -5,6 +5,7 @@ import './test.css';
 import { useParams } from 'react-router-dom';
 
 function Detail() {
+    const loginId = sessionStorage.getItem('loginId');
     const { storeId } = useParams();
     const [storeName, setStoreName] = useState('');
 
@@ -60,7 +61,11 @@ function Detail() {
     };
 
     const handleButtonClick = () => {
-        setShowModal(true);
+        if(loginId) {
+            setShowModal(true);
+        } else {
+            alert("로그인이 필요합니다");
+        }
     };
     
     const handleCloseModal = () => {
